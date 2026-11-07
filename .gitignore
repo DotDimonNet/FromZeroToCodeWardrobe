@@ -426,3 +426,22 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+
+# Thread runtime and build output
+node_modules/
+client/dist/
+src/Wardrobe.Api/wwwroot/
+*.tsbuildinfo
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.*
+!.env.example
+.local-runtime.json
+TestResults/
+artifacts/
+data/
+
+.preview/
