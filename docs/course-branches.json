@@ -1,0 +1,98 @@
+[
+  {
+    "stage": 0,
+    "branch": "course/00-start",
+    "title": "Initial repository",
+    "sha": "7496d98063efc42a40d18adff2ab5b6ed7ed303d",
+    "tree": "e7d95e45f02d70814b46831baad6a3d9c66f1612",
+    "tests": 0
+  },
+  {
+    "stage": 1,
+    "branch": "course/01-foundation",
+    "title": "Scope and solution foundation",
+    "sha": "f960b5e035fd46b810f85f4f4f414cb4cef7494d",
+    "tree": "44a0808bcb2a026ac533e7d89e0ca71ea1e4a7cf",
+    "tests": 0
+  },
+  {
+    "stage": 2,
+    "branch": "course/02-domain",
+    "title": "Domain model and outfit rules",
+    "sha": "48895d214200eb44e24fa74fb6fbaaabafa8e6d0",
+    "tree": "c400e42e54dd7e62f96b27e6f11e325cfa7b2a83",
+    "tests": 8
+  },
+  {
+    "stage": 3,
+    "branch": "course/03-cqrs",
+    "title": "Application contracts and CQRS",
+    "sha": "10a50f1f857c59aa15dcc817641ee4334b20bef6",
+    "tree": "ee43ef53e785eebb8dc6a906bba0ecf84ae49a3a",
+    "tests": 8
+  },
+  {
+    "stage": 4,
+    "branch": "course/04-persistence",
+    "title": "SQLite repositories and Identity persistence",
+    "sha": "0ced72d31e49ee14fe94bf7a912611a8e685c71b",
+    "tree": "b6a3804418f00d220fe6684c605143e67be305d1",
+    "tests": 8
+  },
+  {
+    "stage": 5,
+    "branch": "course/05-api",
+    "title": "MVC Web API and account boundary",
+    "sha": "bfd39d36af24c1c931593ad7961938c8c6775036",
+    "tree": "096018ccb4622b70642d5eef3191394f8aa464f3",
+    "tests": 17
+  },
+  {
+    "stage": 6,
+    "branch": "course/06-react-shell",
+    "title": "React Redux and account screens",
+    "sha": "21db1b33ed505786a305337f5af6a1db794a47b4",
+    "tree": "19be1c9e140f6c3ab9d77b4dbca7905820535042",
+    "tests": 19
+  },
+  {
+    "stage": 7,
+    "branch": "course/07-wardrobe",
+    "title": "Wardrobe catalog vertical slice",
+    "sha": "437ac19f8938399fd30ecbf255396f35b50e0a0e",
+    "tree": "51ea840e35e2b4c7c65b7afacd52636a0bbad8c7",
+    "tests": 19
+  },
+  {
+    "stage": 8,
+    "branch": "course/08-outfits",
+    "title": "Outfit studio saved looks and sharing",
+    "sha": "ba11eab8ade3a5ef1dd388a11d6f6906efc51e6c",
+    "tree": "8856ff9c52e0096c7e52480857e39ef665c85748",
+    "tests": 19
+  },
+  {
+    "stage": 9,
+    "branch": "course/09-community",
+    "title": "Community listings and reservations",
+    "sha": "e9a86e14dc2ce4cda210a3e78186c770885affaa",
+    "tree": "4f977d4c3cd3303fdf249079e07278232a01002f",
+    "tests": 19
+  },
+  {
+    "stage": 10,
+    "branch": "course/10-delivery",
+    "title": "Packaging deployment and course documentation",
+    "sha": "5aaa479d19fb3f472008f047231d67fefc7b278c",
+    "tree": "dbb6dab8f2e3fe55b37c821bcdc23747d63ec5d4",
+    "tests": 19
+  },
+  {
+    "stage": 11,
+    "branch": "course/11-blue-design",
+    "title": "Final responsive blue design",
+    "sha": "4122ff647b6b3e1165393d0157c5a7de7a939143",
+    "tree": "bc8dc5e361cb7663d740671fb99eed984072c34c",
+    "tests": 19
+  }
+]

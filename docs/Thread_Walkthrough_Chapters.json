@@ -1,0 +1,104 @@
+[
+  {
+    "start": "00:00",
+    "seconds": 0,
+    "duration": 12,
+    "title": "Your wardrobe, step by step"
+  },
+  {
+    "start": "00:12",
+    "seconds": 12,
+    "duration": 12,
+    "title": "Start with the demo"
+  },
+  {
+    "start": "00:24",
+    "seconds": 24,
+    "duration": 10,
+    "title": "See what you own"
+  },
+  {
+    "start": "00:34",
+    "seconds": 34,
+    "duration": 8,
+    "title": "Find your blue pieces"
+  },
+  {
+    "start": "00:42",
+    "seconds": 42,
+    "duration": 8,
+    "title": "Combine your filters"
+  },
+  {
+    "start": "00:50",
+    "seconds": 50,
+    "duration": 12,
+    "title": "Keep each piece accurate"
+  },
+  {
+    "start": "01:02",
+    "seconds": 62,
+    "duration": 11,
+    "title": "Choose your preferences"
+  },
+  {
+    "start": "01:13",
+    "seconds": 73,
+    "duration": 12,
+    "title": "Compare the suggestions"
+  },
+  {
+    "start": "01:25",
+    "seconds": 85,
+    "duration": 9,
+    "title": "Keep your good combinations"
+  },
+  {
+    "start": "01:34",
+    "seconds": 94,
+    "duration": 11,
+    "title": "Share one look at a time"
+  },
+  {
+    "start": "01:45",
+    "seconds": 105,
+    "duration": 12,
+    "title": "Give good pieces another chapter"
+  },
+  {
+    "start": "01:57",
+    "seconds": 117,
+    "duration": 12,
+    "title": "Follow the reservation"
+  },
+  {
+    "start": "02:09",
+    "seconds": 129,
+    "duration": 10,
+    "title": "Manage your account"
+  },
+  {
+    "start": "02:19",
+    "seconds": 139,
+    "duration": 12,
+    "title": "Use it on your phone"
+  },
+  {
+    "start": "02:31",
+    "seconds": 151,
+    "duration": 10,
+    "title": "Edit comfortably on mobile"
+  },
+  {
+    "start": "02:41",
+    "seconds": 161,
+    "duration": 10,
+    "title": "Plan a look wherever you are"
+  },
+  {
+    "start": "02:51",
+    "seconds": 171,
+    "duration": 18,
+    "title": "Run the complete app locally"
+  }
+]

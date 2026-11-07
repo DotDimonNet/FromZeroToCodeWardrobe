@@ -1,0 +1,174 @@
+1
+00:00:00,000 --> 00:00:06,000
+Explore Thread: find pieces, plan outfits
+and arrange local clothing exchanges.
+
+2
+00:00:06,000 --> 00:00:12,000
+Annotated sample-data screens; not a
+continuous live API recording.
+
+3
+00:00:12,000 --> 00:00:18,000
+Choose Explore the demo to open the sample
+wardrobe in the local app.
+
+4
+00:00:18,000 --> 00:00:24,000
+Register and activate your email. Social
+login needs server setup.
+
+5
+00:00:24,000 --> 00:00:29,000
+Browse your clothes and shoes, then open a
+piece to inspect its details.
+
+6
+00:00:29,000 --> 00:00:34,000
+Favorite useful pieces, search by name, or
+change the sorting order.
+
+7
+00:00:34,000 --> 00:00:38,000
+Select Blue to narrow this sample wardrobe
+from 11 pieces to 3.
+
+8
+00:00:38,000 --> 00:00:42,000
+You can combine color with season, style,
+era and favorites.
+
+9
+00:00:42,000 --> 00:00:46,000
+Add the Tops category: Blue + Tops leaves
+one matching denim shirt.
+
+10
+00:00:46,000 --> 00:00:50,000
+Reset or clear the filters to return to
+the complete collection.
+
+11
+00:00:50,000 --> 00:00:56,000
+Edit the category, color, season, style,
+era and bundled photo.
+
+12
+00:00:56,000 --> 00:01:02,000
+Mark unavailable pieces, then save your
+changes in the complete local app.
+
+13
+00:01:02,000 --> 00:01:07,500
+For this example, choose All seasons,
+Neutral and Quiet essentials.
+
+14
+00:01:07,500 --> 00:01:13,000
+The engine combines an available top,
+bottom and pair of shoes.
+
+15
+00:01:13,000 --> 00:01:19,000
+These example suggestions were exported
+from the real C# API.
+
+16
+00:01:19,000 --> 00:01:25,000
+Review the reasons, name a look and save
+locally. Scores rank combinations.
+
+17
+00:01:25,000 --> 00:01:29,500
+Saved looks keep your favorite
+combinations together under a useful name.
+
+18
+00:01:29,500 --> 00:01:34,000
+Open Share outfit to manage a public link
+for one look.
+
+19
+00:01:34,000 --> 00:01:39,500
+In the local app, create a share link and
+copy it or share on social networks.
+
+20
+00:01:39,500 --> 00:01:45,000
+Anyone with the link can view the outfit.
+Revoke it to disable the old link.
+
+21
+00:01:45,000 --> 00:01:51,000
+Browse clothes to buy, borrow or receive,
+or publish a listing locally.
+
+22
+00:01:51,000 --> 00:01:57,000
+Request a reservation for local handover.
+No online payments or shipping.
+
+23
+00:01:57,000 --> 00:02:03,000
+Buyers request or cancel. Sellers accept,
+decline or complete an exchange.
+
+24
+00:02:03,000 --> 00:02:09,000
+This sample reservation is already
+accepted; use its details for handover.
+
+25
+00:02:09,000 --> 00:02:14,000
+Manage your profile, password and sign-out
+in the local app.
+
+26
+00:02:14,000 --> 00:02:19,000
+Development demo mode can switch between
+the sample buyer and seller.
+
+27
+00:02:19,000 --> 00:02:25,000
+Use the bottom navigation to reach all
+five sections on your phone.
+
+28
+00:02:25,000 --> 00:02:31,000
+Expand Filters, set your choices and
+return to the wardrobe grid.
+
+29
+00:02:31,000 --> 00:02:36,000
+The mobile editor keeps photos and garment
+properties in a scrollable form.
+
+30
+00:02:36,000 --> 00:02:41,000
+Availability and favorite choices sit
+above the save action.
+
+31
+00:02:41,000 --> 00:02:46,000
+Move between Outfit studio and your saved
+looks using the bottom bar.
+
+32
+00:02:46,000 --> 00:02:51,000
+React adapts the layout; Redux keeps
+interface choices between sections.
+
+33
+00:02:51,000 --> 00:02:57,000
+Install .NET 10 SDK, Node.js 24 and Git,
+then follow the commands shown.
+
+34
+00:02:57,000 --> 00:03:03,000
+Open localhost:3000 and choose Explore the
+demo.
+
+35
+00:03:03,000 --> 00:03:09,000
+Build along with the workbook: C# MVC,
+CQRS, EF Core SQLite, React and Redux.

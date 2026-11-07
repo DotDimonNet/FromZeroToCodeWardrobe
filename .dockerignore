@@ -1,0 +1,13 @@
+**/bin
+**/obj
+**/node_modules
+**/dist
+**/*.db*
+**/wwwroot
+.git
+.preview
+.local-runtime.json
+.env*
+artifacts
+data
+tests
