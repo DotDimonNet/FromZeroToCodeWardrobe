@@ -1,45 +1,62 @@
-# Silent walkthrough and build notes
+# Thread blue wardrobe usage walkthrough
 
-The accompanying `Thread_Walkthrough.mp4` is a 1920×1080 silent video with readable implementation notes. It is an **annotated screen walkthrough**, not a recording of live browser-to-API interactions.
+A silent annotated walkthrough of actual React screens with API-exported sample data. This is not continuous live browser-to-API footage. The UI captures show navigation, combined filters and dialogs. Save, sharing, account and reservation mutations are demonstrated as local-app instructions; no successful server write is implied by these captures.
 
-The original video shows the first visual theme. The current blue redesign is documented in [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md), including updated desktop and mobile screenshots. Re-running the export below renders the current React design; it does not replace the previously delivered video automatically.
+Duration: 3:09. Resolution: 1920 x 1080. No audio track.
 
-The browser preview host could not initialize CoreCLR. To preserve visual fidelity without substituting a different backend, the walkthrough uses the actual React components rendered with responses exported from the real ASP.NET application running in its integration-test host. The export creates a look, requests a reservation and accepts it through real controllers, handlers and SQLite transactions. Each captured screen is labeled accordingly.
+[Optional subtitles](Thread_Walkthrough.srt) and [chapter timestamps](Thread_Walkthrough_Chapters.json) accompany the video.
 
-## Video chapters
+## Chapters
 
-| Time | Screen | Implementation lesson |
-| --- | --- | --- |
-| 00:00 | Product overview | Define the smallest useful wardrobe and exchange loop. |
-| 00:12 | Sign-in | Identity, activation, recovery, cookies, CSRF and provider configuration. |
-| 00:27 | Wardrobe home | Domain entities, ownership, repositories and SQLite. |
-| 00:40 | Gallery | Combined filters, Redux state, RTK Query and licensed assets. |
-| 00:53 | Garment editor | Trace a vertical slice from form through command to database. |
-| 01:08 | Outfit studio | Season/style/era/palette constraints and explainable ranking. |
-| 01:24 | Saved looks | Persist combinations and create/revoke public share tokens. |
-| 01:39 | Sharing circle | Sell, lend and give away; reservation-based MVP scope. |
-| 01:53 | Reservations | Role-controlled transitions and atomic inventory updates. |
-| 02:09 | Profile | Account maintenance and development-only role switching. |
-| 02:22 | Mobile layouts | Responsive composition and accessibility considerations. |
-| 02:35 | Architecture and delivery | Tests, GitHub workflows and local start commands. |
+- 00:00 - Your wardrobe, step by step
+- 00:12 - Start with the demo
+- 00:24 - See what you own
+- 00:34 - Find your blue pieces
+- 00:42 - Combine your filters
+- 00:50 - Keep each piece accurate
+- 01:02 - Choose your preferences
+- 01:13 - Compare the suggestions
+- 01:25 - Keep your good combinations
+- 01:34 - Share one look at a time
+- 01:45 - Give good pieces another chapter
+- 01:57 - Follow the reservation
+- 02:09 - Manage your account
+- 02:19 - Use it on your phone
+- 02:31 - Edit comfortably on mobile
+- 02:41 - Plan a look wherever you are
+- 02:51 - Run the complete app locally
 
-## Run a live demonstration locally
+## Run the full application
 
-1. Follow the README's startup commands and open `http://localhost:3000`.
-2. Explore the demo as Alex. Add a sample garment and find it using combined filters.
-3. Generate a neutral outfit in Outfit studio. Save it as “My everyday edit”.
-4. Open Saved looks. Enable sharing, open the URL in a signed-out browser, then revoke it and confirm the old link stops working.
-5. Open Sharing circle and request an available piece. Include a pickup suggestion in the message.
-6. Open the profile and switch the demo role to Maya. Accept the request in Reservations; complete it after the simulated handover.
-7. Switch back to Alex and inspect the updated status.
-8. Sign out. Register a new `example.test` account, follow the labeled development activation link and sign in. Test password recovery with the development reset link.
-9. Configure real SMTP and OAuth credentials separately before demonstrating live provider sign-in.
+Install .NET 10 SDK, Node.js 24 and Git. Your GitHub account needs access to the repository. Use the workbook and [course checkpoint branches](COURSE_BRANCHES.md) for guided development. The full application uses ASP.NET Core MVC controllers, CQRS handlers and EF Core SQLite behind React and Redux. The browser preview shown here does not replace deployment smoke testing.
 
-The static walkthrough does not validate browser event handling, real social-provider redirects, email delivery or a production ingress. The repository's automated tests cover the actual API's business and security boundaries; perform the deployment smoke tests in `DEPLOYMENT.md` on your real host.
+```sh
+git clone https://github.com/DotDimonNet/FromZeroToCodeWardrobe.git
+cd FromZeroToCodeWardrobe
+git switch --track origin/course/11-blue-design
+npm ci --prefix client
+npm run dev
+```
 
-## Reproduce the visual export
+Open http://localhost:3000 and choose Explore the demo.
 
-This optional tooling is not part of the production app:
+## Practice the complete workflow
+
+1. Open the full local app and choose **Explore the demo**. Add a garment, edit its properties and find it using category and color filters.
+2. In Outfit studio, choose All seasons, Any style, Any era, Neutral palette and Quiet essentials. Generate an outfit, name it and save it.
+3. In Saved looks, create a share link, view it while signed out, then revoke it and confirm the old link stops working.
+4. In Sharing circle, reserve a piece and include a suggested pickup time. Open your profile and switch demo role to the seller; accept the request in Reservations.
+5. Complete the exchange as the seller, or practise cancellation as the buyer. Observe the different allowed actions and stock changes.
+6. Sign out and test registration, activation and password recovery using the development-only test links. Configure provider credentials separately for real OAuth and email delivery.
+7. Repeat navigation and garment editing at a narrow viewport. Check that the bottom bar does not cover controls and that Escape restores focus after closing a dialog.
+
+The marketplace coordinates reservations and local handover; it does not process payments, shipping or private chat. The outfit score is a deterministic ranking. The bundled sample photographs have source and license records in `client/public/image-credits.json`.
+
+## Evidence and reproduction
+
+The video presents captured screen states with usage notes. Navigation, combined filters, preference controls and dialogs were operated in the actual React UI. The generated-outfit example replays the exact read-only response exported from the C# test host for All/Any/Any/Neutral/essentials. Account, garment, sharing and reservation writes remain instructions for the complete local app; they were not recorded against a running backend in the preview.
+
+The optional export below obtains real API response data and renders static React screens for visual inspection. It does not record browser interaction or recreate the video automatically.
 
 ```sh
 npm ci --prefix client
@@ -50,14 +67,4 @@ node scripts/render-walkthrough.mjs
 node artifacts/render-walkthrough.cjs artifacts/demo-data.json artifacts/walkthrough
 ```
 
-Serve `artifacts/walkthrough` with a local static server and capture the named pages. `scripts/make-demo-video.py` assembles those screen images with notes using Pillow and FFmpeg; its docstring describes the expected paths. Keep the explicit static-walkthrough label on any reused screen or video. All sample people and accounts are fictional.
-
-## Validation record
-
-- C# solution builds with warnings treated as errors.
-- 17 backend/domain/integration tests passed against SQLite and ASP.NET Identity.
-- 2 frontend state tests passed; strict TypeScript and Vite production build passed.
-- NuGet audit including transitive dependencies: no known vulnerable packages at the time of this run.
-- npm audit including development dependencies: no known vulnerabilities at the time of this run.
-- Desktop and 390 px rendered React layouts inspected visually.
-- Google/Facebook, real SMTP, Docker runtime and public production deployment: configuration supplied, live environment verification pending.
+The full checkpoint passes 17 backend/domain/HTTP integration cases and two Redux cases. Its GitHub workflow builds the actual C# and React source. Live OAuth, real SMTP, Docker runtime and public production ingress still require environment-specific verification. See [deployment guidance](DEPLOYMENT.md) and the [blue design guide](DESIGN_SYSTEM.md).

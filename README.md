@@ -82,6 +82,7 @@ CQRS here means separate **command and query paths**, sharing one database. It d
 
 ## Learn, configure, deploy
 
+- [Development checkpoints and branch verification](docs/COURSE_BRANCHES.md)
 - [Build it step by step](docs/BUILD_GUIDE.md)
 - [Blue design system and desktop/mobile screenshots](docs/DESIGN_SYSTEM.md)
 - [MVP scope and acceptance criteria](docs/MVP.md)
