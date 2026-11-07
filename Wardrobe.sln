@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wardrobe.Tests", "tests\War
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wardrobe.Application", "src\Wardrobe.Application\Wardrobe.Application.csproj", "{0D42AA8B-C14D-5040-8495-78511F3EDFF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wardrobe.Infrastructure", "src\Wardrobe.Infrastructure\Wardrobe.Infrastructure.csproj", "{0A0A2DF2-400A-5C04-9EAC-E5B039A5D927}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,5 +28,9 @@ Global
 		{0D42AA8B-C14D-5040-8495-78511F3EDFF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D42AA8B-C14D-5040-8495-78511F3EDFF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D42AA8B-C14D-5040-8495-78511F3EDFF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A0A2DF2-400A-5C04-9EAC-E5B039A5D927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A0A2DF2-400A-5C04-9EAC-E5B039A5D927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A0A2DF2-400A-5C04-9EAC-E5B039A5D927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A0A2DF2-400A-5C04-9EAC-E5B039A5D927}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

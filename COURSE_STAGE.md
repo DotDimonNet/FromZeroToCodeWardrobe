@@ -1,8 +1,8 @@
-# Stage 03 Application contracts and CQRS
+# Stage 04 SQLite repositories and Identity persistence
 
-Branch: `course/03-cqrs`. Start from `course/02-domain`.
+Branch: `course/04-persistence`. Start from `course/03-cqrs`.
 
-Separate queries from commands and depend on repository contracts instead of a database implementation.
+Implement repository contracts with EF Core, add the relational schema, migration and seed data.
 
 This is a reconstructed teaching checkpoint in a cumulative sequence. It is not a claim about the chronological order in which the original project was authored. Earlier branches intentionally contain only the layers or screens taught so far.
 
@@ -16,13 +16,13 @@ Install the .NET 10 SDK. Run commands from the repository root. Save your own wo
 dotnet test Wardrobe.sln -m:1 -p:UseSharedCompilation=false
 ```
 
-Application and Domain compile; eight domain cases pass. Trace AddGarment through its command handler and unit-of-work contract.
+Infrastructure compiles and eight domain cases pass. The database is not started yet; the API host in Stage 05 applies the migration.
 
 ## Compare your work
 
 ```sh
-git diff origin/course/02-domain..origin/course/03-cqrs --stat
-git diff origin/course/02-domain..origin/course/03-cqrs -- src client
+git diff origin/course/03-cqrs..origin/course/04-persistence --stat
+git diff origin/course/03-cqrs..origin/course/04-persistence -- src client
 ```
 
-Next checkpoint: `course/04-persistence`.
+Next checkpoint: `course/05-api`.
