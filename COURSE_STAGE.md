@@ -1,8 +1,8 @@
-# Stage 04 SQLite repositories and Identity persistence
+# Stage 05 MVC Web API and account boundary
 
-Branch: `course/04-persistence`. Start from `course/03-cqrs`.
+Branch: `course/05-api`. Start from `course/04-persistence`.
 
-Implement repository contracts with EF Core, add the relational schema, migration and seed data.
+Expose the application through authenticated MVC controllers with cookies, CSRF, activation/recovery and ownership checks.
 
 This is a reconstructed teaching checkpoint in a cumulative sequence. It is not a claim about the chronological order in which the original project was authored. Earlier branches intentionally contain only the layers or screens taught so far.
 
@@ -14,15 +14,17 @@ Install the .NET 10 SDK. Run commands from the repository root. Save your own wo
 
 ```sh
 dotnet test Wardrobe.sln -m:1 -p:UseSharedCompilation=false
+# Start the API in Development at http://localhost:5080
+dotnet run --project src/Wardrobe.Api --launch-profile Wardrobe.Api
 ```
 
-Infrastructure compiles and eight domain cases pass. The database is not started yet; the API host in Stage 05 applies the migration.
+All 17 backend cases pass against SQLite. GET /api/config responds; private endpoints require a session. The home page has no frontend yet.
 
 ## Compare your work
 
 ```sh
-git diff origin/course/03-cqrs..origin/course/04-persistence --stat
-git diff origin/course/03-cqrs..origin/course/04-persistence -- src client
+git diff origin/course/04-persistence..origin/course/05-api --stat
+git diff origin/course/04-persistence..origin/course/05-api -- src client
 ```
 
-Next checkpoint: `course/05-api`.
+Next checkpoint: `course/06-react-shell`.
