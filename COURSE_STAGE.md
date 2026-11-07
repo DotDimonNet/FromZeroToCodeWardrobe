@@ -1,8 +1,8 @@
-# Stage 02 Domain model and outfit rules
+# Stage 03 Application contracts and CQRS
 
-Branch: `course/02-domain`. Start from `course/01-foundation`.
+Branch: `course/03-cqrs`. Start from `course/02-domain`.
 
-Model garments, outfits, listings and orders, then implement deterministic outfit matching as pure C# logic.
+Separate queries from commands and depend on repository contracts instead of a database implementation.
 
 This is a reconstructed teaching checkpoint in a cumulative sequence. It is not a claim about the chronological order in which the original project was authored. Earlier branches intentionally contain only the layers or screens taught so far.
 
@@ -16,13 +16,13 @@ Install the .NET 10 SDK. Run commands from the repository root. Save your own wo
 dotnet test Wardrobe.sln -m:1 -p:UseSharedCompilation=false
 ```
 
-Eight domain test cases pass. Incompatible seasons, unavailable garments and invalid palettes are rejected.
+Application and Domain compile; eight domain cases pass. Trace AddGarment through its command handler and unit-of-work contract.
 
 ## Compare your work
 
 ```sh
-git diff origin/course/01-foundation..origin/course/02-domain --stat
-git diff origin/course/01-foundation..origin/course/02-domain -- src client
+git diff origin/course/02-domain..origin/course/03-cqrs --stat
+git diff origin/course/02-domain..origin/course/03-cqrs -- src client
 ```
 
-Next checkpoint: `course/03-cqrs`.
+Next checkpoint: `course/04-persistence`.
