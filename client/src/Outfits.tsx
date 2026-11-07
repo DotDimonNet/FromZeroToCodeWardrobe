@@ -23,6 +23,7 @@ import {
   errorText,
 } from "./store";
 import {
+  Brand,
   Button,
   Empty,
   ErrorBox,
@@ -529,7 +530,7 @@ export function PublicOutfit({ token }: { token: string }) {
   return (
     <div className="public-page">
       <a className="wordmark" href="/">
-        thread<span>®</span>
+        <Brand />
       </a>
       {isLoading ? (
         <Loading />

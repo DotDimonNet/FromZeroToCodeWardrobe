@@ -1,8 +1,8 @@
-# Stage 10 Packaging deployment and course documentation
+# Stage 11 Final responsive blue design
 
-Branch: `course/10-delivery`. Start from `course/09-community`.
+Branch: `course/11-blue-design`. Start from `course/10-delivery`.
 
-Package the complete original-theme MVP, document provider setup and deployment, and add reproducible API-data exports.
+Apply the current cobalt palette, Manrope type, desktop filter rail and mobile bottom navigation across all features.
 
 This is a reconstructed teaching checkpoint in a cumulative sequence. It is not a claim about the chronological order in which the original project was authored. Earlier branches intentionally contain only the layers or screens taught so far.
 
@@ -15,11 +15,9 @@ Install the .NET 10 SDK, Node.js 24 and npm. Run commands from the repository ro
 ```sh
 npm ci --prefix client
 npm run dev
-# Optional local Docker demo
-docker compose up --build
 ```
 
-The complete original-theme application builds and all 19 tests pass. Docker/provider/public-host smoke tests still require their target environment.
+The complete current blue application builds and all 19 tests pass. Check desktop and phone layouts, mobile filters and keyboard dialog dismissal.
 
 The root development command builds React, copies the output into the C# API, builds .NET, and starts a single same-origin website. Do not run a second frontend server for this walkthrough. Initial startup can take a minute. Development demo data is seeded automatically; use Explore the demo. Google/Facebook/SMTP need provider configuration and are not required for local study.
 
@@ -34,8 +32,8 @@ dotnet test Wardrobe.sln -m:1 -p:UseSharedCompilation=false
 ## Compare your work
 
 ```sh
-git diff origin/course/09-community..origin/course/10-delivery --stat
-git diff origin/course/09-community..origin/course/10-delivery -- src client
+git diff origin/course/10-delivery..origin/course/11-blue-design --stat
+git diff origin/course/10-delivery..origin/course/11-blue-design -- src client
 ```
 
-Next checkpoint: `course/11-blue-design`.
+This checkpoint matches the current blue application source. The additional course guide and checkpoint workflow exist to support learning.

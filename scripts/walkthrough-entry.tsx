@@ -1,13 +1,7 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Provider } from "react-redux";
-import {
-  readFileSync,
-  writeFileSync,
-  mkdirSync,
-  cpSync,
-  readdirSync,
-} from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, cpSync } from "node:fs";
 import { resolve } from "node:path";
 import App from "../client/src/App";
 import { AccountGate, Profile } from "../client/src/Account";
@@ -21,7 +15,11 @@ const output = resolve(process.argv[3] || "artifacts/walkthrough");
 mkdirSync(output, { recursive: true });
 cpSync("client/dist/assets", output + "/assets", { recursive: true });
 cpSync("client/public/images", output + "/images", { recursive: true });
-const css = readdirSync(output + "/assets").find((x) => x.endsWith(".css"))!;
+const cssUrl = readFileSync("client/dist/index.html", "utf8").match(
+  /href="([^"]+\.css)"/,
+)?.[1];
+if (!cssUrl)
+  throw new Error("Build the client before rendering the walkthrough.");
 Object.assign(globalThis, { location: new URL("http://localhost/") });
 store.dispatch(
   api.util.upsertQueryEntries([
@@ -40,7 +38,7 @@ function save(file: string, node: React.ReactNode) {
   const html = renderToStaticMarkup(wrap(node));
   writeFileSync(
     `${output}/${file}.html`,
-    `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thread · visual walkthrough</title><link rel="stylesheet" href="/assets/${css}"><style>.walkthrough-label{position:fixed;bottom:0;left:0;right:0;z-index:180;background:#223d2f;color:#dce5d2;text-align:center;font:9px Arial;letter-spacing:1px;padding:7px;pointer-events:none}</style></head><body>${html}<div class="walkthrough-label">RENDERED REACT SCREENS · REAL API-EXPORTED DEMO DATA · STATIC WALKTHROUGH</div></body></html>`,
+    `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thread · visual walkthrough</title><link rel="stylesheet" href="${cssUrl}"><style>.walkthrough-label{position:fixed;bottom:0;left:0;right:0;z-index:180;background:#122346;color:#e2ebff;text-align:center;font:9px Arial;letter-spacing:1px;padding:7px;pointer-events:none}@media(max-width:950px){.walkthrough-label{position:static;font-size:8px;letter-spacing:.5px;padding-bottom:90px}}</style></head><body>${html}<div class="walkthrough-label">RENDERED REACT SCREENS · REAL API-EXPORTED DEMO DATA · STATIC WALKTHROUGH</div></body></html>`,
   );
 }
 save("01-sign-in", <AccountGate config={source.config} />);
