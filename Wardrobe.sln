@@ -4,6 +4,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wardrobe.Domain", "src\Wardrobe.Domain\Wardrobe.Domain.csproj", "{EB2D447B-3529-5DFC-BFB1-D521CE3BAA2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wardrobe.Tests", "tests\Wardrobe.Tests\Wardrobe.Tests.csproj", "{2B2A1445-E6A0-58FB-95A6-745DF200ADC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,5 +16,9 @@ Global
 		{EB2D447B-3529-5DFC-BFB1-D521CE3BAA2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB2D447B-3529-5DFC-BFB1-D521CE3BAA2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB2D447B-3529-5DFC-BFB1-D521CE3BAA2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2A1445-E6A0-58FB-95A6-745DF200ADC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2A1445-E6A0-58FB-95A6-745DF200ADC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2A1445-E6A0-58FB-95A6-745DF200ADC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2A1445-E6A0-58FB-95A6-745DF200ADC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

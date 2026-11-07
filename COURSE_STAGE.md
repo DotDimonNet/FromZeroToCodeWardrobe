@@ -1,8 +1,8 @@
-# Stage 01 Scope and solution foundation
+# Stage 02 Domain model and outfit rules
 
-Branch: `course/01-foundation`. Start from `course/00-start`.
+Branch: `course/02-domain`. Start from `course/01-foundation`.
 
-Translate the wardrobe problem into an MVP and establish the .NET solution boundary.
+Model garments, outfits, listings and orders, then implement deterministic outfit matching as pure C# logic.
 
 This is a reconstructed teaching checkpoint in a cumulative sequence. It is not a claim about the chronological order in which the original project was authored. Earlier branches intentionally contain only the layers or screens taught so far.
 
@@ -13,16 +13,16 @@ Install the .NET 10 SDK. Run commands from the repository root. Save your own wo
 ## Run and verify
 
 ```sh
-dotnet build Wardrobe.sln -m:1 -p:UseSharedCompilation=false
+dotnet test Wardrobe.sln -m:1 -p:UseSharedCompilation=false
 ```
 
-The empty Domain class library compiles. Explain the MVP exclusions before writing features.
+Eight domain test cases pass. Incompatible seasons, unavailable garments and invalid palettes are rejected.
 
 ## Compare your work
 
 ```sh
-git diff origin/course/00-start..origin/course/01-foundation --stat
-git diff origin/course/00-start..origin/course/01-foundation -- src client
+git diff origin/course/01-foundation..origin/course/02-domain --stat
+git diff origin/course/01-foundation..origin/course/02-domain -- src client
 ```
 
-Next checkpoint: `course/02-domain`.
+Next checkpoint: `course/03-cqrs`.
