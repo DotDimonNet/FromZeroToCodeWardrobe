@@ -67,7 +67,7 @@ Google and Facebook use server-side OAuth redirects. An existing email is not si
 
 Read `client/src/store.ts`. The Redux UI slice holds navigation, filters, outfit preferences and notifications. RTK Query owns API loading/error/data state and invalidates cached lists after mutations. Authentication tokens are not stored in localStorage.
 
-Components are grouped by feature: `Wardrobe.tsx`, `Outfits.tsx`, `Market.tsx`, `Account.tsx`. `ui.tsx` contains shared dialogs, errors, fields, buttons and request-state helpers. The CSS defines a responsive editorial design with reduced-motion support.
+Components are grouped by feature: `Wardrobe.tsx`, `Outfits.tsx`, `Market.tsx`, `Account.tsx`. `ui.tsx` contains shared dialogs, errors, fields, buttons and request-state helpers. The CSS defines a responsive blue design with reduced-motion support. Follow the [design system](DESIGN_SYSTEM.md) for palette, typography, catalog filters, mobile navigation and visual checks.
 
 Exercise: add a “sort favorites first” option and preserve filters when navigating away and back. Avoid duplicating the API data into a second Redux slice.
 

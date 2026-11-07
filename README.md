@@ -83,6 +83,7 @@ CQRS here means separate **command and query paths**, sharing one database. It d
 ## Learn, configure, deploy
 
 - [Build it step by step](docs/BUILD_GUIDE.md)
+- [Blue design system and desktop/mobile screenshots](docs/DESIGN_SYSTEM.md)
 - [MVP scope and acceptance criteria](docs/MVP.md)
 - [Provider configuration and deployment](docs/DEPLOYMENT.md)
 - [HTTP API reference](docs/API.md)
@@ -101,4 +102,4 @@ dotnet package list --vulnerable --include-transitive
 
 GitHub Actions builds, tests and packages the application. The optional **Publish container** workflow publishes a Docker image to your repository's GitHub Container Registry when you run it manually. Nothing in this repository provisions a paid service automatically.
 
-Source code uses the repository's existing MIT license. Photo-specific CC0 records are bundled separately. Trademarks in sample photos imply no endorsement.
+Source code uses the repository's existing MIT license. Photo-specific CC0 records are bundled separately. Manrope is bundled under the SIL Open Font License in `client/public/fonts/OFL-Manrope.txt`. Trademarks in sample photos imply no endorsement.

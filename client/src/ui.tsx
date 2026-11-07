@@ -6,6 +6,7 @@ import {
   Image,
   Check,
   AlertCircle,
+  Shirt,
 } from "lucide-react";
 import { FetchArgs } from "@reduxjs/toolkit/query";
 import {
@@ -14,6 +15,16 @@ import {
   useAppDispatch,
   useCommandMutation,
 } from "./store";
+export function Brand() {
+  return (
+    <>
+      <span className="brand-symbol" aria-hidden="true">
+        <Shirt size={22} strokeWidth={1.8} />
+      </span>
+      thread<span className="brand-dot">.</span>
+    </>
+  );
+}
 export function useTask() {
   const [command, { isLoading }] = useCommandMutation();
   const [error, setError] = useState("");

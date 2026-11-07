@@ -12,6 +12,8 @@ import {
   Pencil,
   Trash2,
   Leaf,
+  ArrowRight,
+  Check,
 } from "lucide-react";
 import {
   actions,
@@ -62,31 +64,30 @@ export function WardrobePage({
       <section className="wardrobe-hero">
         <div className="hero-copy">
           <span className="eyebrow">
-            <span className="tiny-dot" /> A LITTLE INTENTION, EVERY DAY
+            <span className="tiny-dot" /> YOUR STYLE. YOUR POSSIBILITIES.
           </span>
           <h1>
-            Good style starts
+            Your wardrobe.
             <br />
-            with what you own.
+            <span>Reimagined.</span>
           </h1>
           <p>
-            Your favorite pieces. A fresh perspective.
-            <br />
-            Let’s make more of your wardrobe.
+            Less “nothing to wear.” More looks you love. Rediscover your pieces
+            and put something great together.
           </p>
           <Button onClick={() => dispatch(actions.navigate("studio"))}>
             <Sparkles size={17} />
-            Find my next outfit
+            Build an outfit
             <ArrowUpRight size={17} />
           </Button>
           <div className="hero-stats">
             <div>
               <b>{all.length.toString().padStart(2, "0")}</b>
-              <span>pieces to love</span>
+              <span>wardrobe pieces</span>
             </div>
             <div>
               <b>{outfits.length.toString().padStart(2, "0")}</b>
-              <span>looks to repeat</span>
+              <span>saved looks</span>
             </div>
             <div className="hero-philosophy">
               <Leaf size={19} />
@@ -99,18 +100,27 @@ export function WardrobePage({
           </div>
         </div>
         <div className="hero-art" aria-hidden="true">
-          <div className="art-caption">THE EVERYDAY EDIT / 01</div>
+          <div className="art-caption">
+            <span>THE EVERYDAY EDIT</span>
+            <span>MADE FOR EVERY DAY</span>
+          </div>
           <div className="art-main">
             <Photo imageKey="denim-shirt" alt="" />
-            <span>well worn. well loved.</span>
+            <span>
+              <b>Denim, on repeat.</b>
+              <ArrowUpRight size={16} />
+            </span>
           </div>
           <div className="art-small">
             <Photo imageKey="retro-shoes" alt="" />
-            <span>GO-TO FAVORITES</span>
+            <span>
+              <b>Your everyday pair</b>
+              <ArrowUpRight size={16} />
+            </span>
           </div>
           <div className="art-label">
-            <span>Made for</span>
-            <b>your everyday.</b>
+            <Sparkles size={16} />
+            <span>Good pieces. New combinations.</span>
           </div>
         </div>
       </section>
@@ -120,7 +130,7 @@ export function WardrobePage({
             <h2>
               Your wardrobe <span className="count">{all.length}</span>
             </h2>
-            <p>A home for every piece of your personal style.</p>
+            <p>All your favorites. One thoughtfully organized space.</p>
           </div>
           <Button onClick={() => edit()}>
             <Plus size={17} />
@@ -134,6 +144,7 @@ export function WardrobePage({
                 <button
                   key={c}
                   className={filters.category === c ? "active" : ""}
+                  aria-pressed={filters.category === c}
                   onClick={() => dispatch(actions.filter({ category: c }))}
                 >
                   {
@@ -161,28 +172,59 @@ export function WardrobePage({
                 onChange={(e) =>
                   dispatch(actions.filter({ search: e.target.value }))
                 }
-                placeholder="Find a piece…"
+                placeholder="Search your wardrobe…"
               />
             </label>
             <button
               className={`filter-toggle ${expanded ? "active" : ""}`}
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
+              aria-controls="wardrobe-filters"
             >
               <SlidersHorizontal size={17} />
               Filters{countFilters > 0 && <span>{countFilters}</span>}
             </button>
           </div>
         </div>
-        {expanded && (
-          <div className="filters-panel">
-            <Select
-              label="Color"
-              value={filters.color}
-              options={Object.keys(config.colors)}
-              placeholder="All colors"
-              onChange={(color) => dispatch(actions.filter({ color }))}
-            />
+        <div className="catalog-layout">
+          <aside
+            id="wardrobe-filters"
+            className={`filters-panel ${expanded ? "is-expanded" : ""}`}
+            aria-label="Wardrobe filters"
+          >
+            <div className="filter-heading">
+              <h3>
+                <SlidersHorizontal size={17} /> Filters
+              </h3>
+              <button onClick={() => dispatch(actions.resetFilters())}>
+                Reset
+              </button>
+            </div>
+            <fieldset className="color-filter">
+              <legend>Color palette</legend>
+              <div className="color-options">
+                {Object.entries(config.colors).map(([color, hex]) => (
+                  <button
+                    key={color}
+                    className={filters.color === color ? "selected" : ""}
+                    aria-label={`Filter by ${color}`}
+                    aria-pressed={filters.color === color}
+                    title={color}
+                    onClick={() =>
+                      dispatch(
+                        actions.filter({
+                          color: filters.color === color ? "" : color,
+                        }),
+                      )
+                    }
+                  >
+                    <span style={{ background: hex }} />
+                    {filters.color === color && <Check size={12} />}
+                  </button>
+                ))}
+              </div>
+              <p>{filters.color || "Every shade of you"}</p>
+            </fieldset>
             <Select
               label="Season"
               value={filters.season}
@@ -198,7 +240,7 @@ export function WardrobePage({
               onChange={(style) => dispatch(actions.filter({ style }))}
             />
             <Select
-              label="Era"
+              label="Era / period"
               value={filters.era}
               options={config.eras}
               placeholder="All eras"
@@ -206,124 +248,147 @@ export function WardrobePage({
             />
             <button
               className={`chip favorite-chip ${filters.favorites ? "selected" : ""}`}
+              aria-pressed={filters.favorites}
               onClick={() =>
                 dispatch(actions.filter({ favorites: !filters.favorites }))
               }
             >
               <Heart size={15} />
-              Favorites
+              Favorites only
             </button>
-          </div>
-        )}
-        <div className="results-bar">
-          <span>
-            {pieces.length} {pieces.length === 1 ? "piece" : "pieces"}
-            {(countFilters > 0 || filters.category || filters.search) && (
-              <button onClick={() => dispatch(actions.resetFilters())}>
-                Clear filters
-                <X size={12} />
+            <div className="filter-tip">
+              <Sparkles size={19} />
+              <p>A new look might already be in your wardrobe.</p>
+              <button onClick={() => dispatch(actions.navigate("studio"))}>
+                Try outfit studio <ArrowRight size={15} />
               </button>
-            )}
-          </span>
-          <label>
-            Sort by{" "}
-            <select
-              aria-label="Sort wardrobe"
-              value={filters.sort}
-              onChange={(e) =>
-                dispatch(actions.filter({ sort: e.target.value }))
-              }
-            >
-              <option value="newest">Recently added</option>
-              <option value="name">Name A–Z</option>
-              <option value="color">Color</option>
-            </select>
-          </label>
-        </div>
-        <ErrorBox error={error ? errorText(error) : task.error} />
-        {isLoading ? (
-          <Loading />
-        ) : pieces.length === 0 ? (
-          <Empty
-            title="Room for something good"
-            action={
-              <Button secondary onClick={() => edit()}>
-                <Plus size={16} />
-                Add your first piece
-              </Button>
-            }
-          >
-            Add a piece, or loosen your filters to rediscover your wardrobe.
-          </Empty>
-        ) : (
-          <div className="garment-grid">
-            {pieces.map((g) => (
-              <article
-                className={`garment-card ${!g.isAvailable ? "unavailable" : ""}`}
-                key={g.id}
+            </div>
+          </aside>
+          <div className="catalog-results">
+            <div className="results-bar">
+              <span aria-live="polite">
+                <b>{pieces.length}</b>{" "}
+                {pieces.length === 1 ? "piece" : "pieces"}
+                {(countFilters > 0 || filters.category || filters.search) && (
+                  <button onClick={() => dispatch(actions.resetFilters())}>
+                    Clear filters
+                    <X size={12} />
+                  </button>
+                )}
+              </span>
+              <label>
+                Sort by{" "}
+                <select
+                  aria-label="Sort wardrobe"
+                  value={filters.sort}
+                  onChange={(e) =>
+                    dispatch(actions.filter({ sort: e.target.value }))
+                  }
+                >
+                  <option value="newest">Recently added</option>
+                  <option value="name">Name A–Z</option>
+                  <option value="color">Color</option>
+                </select>
+              </label>
+            </div>
+            <ErrorBox error={error ? errorText(error) : task.error} />
+            {isLoading ? (
+              <Loading />
+            ) : pieces.length === 0 ? (
+              <Empty
+                title="Room for something good"
+                action={
+                  <Button secondary onClick={() => edit()}>
+                    <Plus size={16} />
+                    Add your first piece
+                  </Button>
+                }
               >
-                <div className="garment-image">
-                  <button
-                    className="image-button"
-                    onClick={() => edit(g)}
-                    aria-label={`Edit ${g.name}`}
+                Add a piece, or loosen your filters to rediscover your wardrobe.
+              </Empty>
+            ) : (
+              <div className="garment-grid">
+                {pieces.map((g) => (
+                  <article
+                    className={`garment-card ${!g.isAvailable ? "unavailable" : ""}`}
+                    key={g.id}
                   >
-                    <Photo imageKey={g.imageKey} alt={g.name} />
-                  </button>
-                  <span className="photo-tag">
-                    {g.category === "Top"
-                      ? "ESSENTIAL"
-                      : g.category === "Shoes"
-                        ? "ON REPEAT"
-                        : g.category === "Outerwear"
-                          ? "LAYER UP"
-                          : "EVERYDAY"}
-                  </span>
-                  <button
-                    className={`favorite ${g.isFavorite ? "on" : ""}`}
-                    aria-label={`${g.isFavorite ? "Unfavorite" : "Favorite"} ${g.name}`}
-                    aria-pressed={g.isFavorite}
-                    disabled={task.busy}
-                    onClick={() =>
-                      task.run({
-                        url: `garments/${g.id}`,
-                        method: "PUT",
-                        body: { ...g, isFavorite: !g.isFavorite },
-                      })
-                    }
-                  >
-                    <Heart
-                      size={17}
-                      fill={g.isFavorite ? "currentColor" : "none"}
-                    />
-                  </button>
-                  {!g.isAvailable && (
-                    <span className="unavailable-label">
-                      Away from wardrobe
-                    </span>
-                  )}
-                </div>
-                <div className="garment-info">
-                  <div>
-                    <h3>
-                      <button onClick={() => edit(g)}>{g.name}</button>
-                    </h3>
-                    <p>
-                      {g.style}
-                      <span>·</span>
-                      {g.season === "All" ? "All seasons" : g.season}
-                    </p>
-                  </div>
-                  <span
-                    title={g.color}
-                    className="color-dot"
-                    style={{ background: config.colors[g.color] }}
-                  />
-                </div>
-              </article>
-            ))}
+                    <div className="garment-image">
+                      <button
+                        className="image-button"
+                        onClick={() => edit(g)}
+                        aria-label={`Edit ${g.name}`}
+                      >
+                        <Photo imageKey={g.imageKey} alt={g.name} />
+                      </button>
+                      <span className="photo-tag">
+                        {g.category === "Top"
+                          ? "ESSENTIAL"
+                          : g.category === "Shoes"
+                            ? "ON REPEAT"
+                            : g.category === "Outerwear"
+                              ? "LAYER UP"
+                              : "EVERYDAY"}
+                      </span>
+                      <button
+                        className={`favorite ${g.isFavorite ? "on" : ""}`}
+                        aria-label={`${g.isFavorite ? "Unfavorite" : "Favorite"} ${g.name}`}
+                        aria-pressed={g.isFavorite}
+                        disabled={task.busy}
+                        onClick={() =>
+                          task.run({
+                            url: `garments/${g.id}`,
+                            method: "PUT",
+                            body: { ...g, isFavorite: !g.isFavorite },
+                          })
+                        }
+                      >
+                        <Heart
+                          size={17}
+                          fill={g.isFavorite ? "currentColor" : "none"}
+                        />
+                      </button>
+                      {!g.isAvailable && (
+                        <span className="unavailable-label">
+                          Away from wardrobe
+                        </span>
+                      )}
+                    </div>
+                    <div className="garment-info">
+                      <div>
+                        <h3>
+                          <button onClick={() => edit(g)}>{g.name}</button>
+                        </h3>
+                        <p>
+                          {g.style}
+                          <span>·</span>
+                          {g.season === "All" ? "All seasons" : g.season}
+                        </p>
+                      </div>
+                      <span
+                        title={g.color}
+                        aria-label={g.color}
+                        className="color-dot"
+                        style={{ background: config.colors[g.color] }}
+                      />
+                    </div>
+                    <div className="garment-card-bottom">
+                      <span>
+                        {g.category} <span> / </span> {g.era}
+                      </span>
+                      <button
+                        onClick={() => edit(g)}
+                        aria-label={`View details for ${g.name}`}
+                      >
+                        <ArrowUpRight size={17} />
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </section>
       <div className="bottom-note">
         <Leaf size={16} />

@@ -7,10 +7,10 @@ import {
   ShoppingBag,
   ArrowUpRight,
   Leaf,
-  Menu,
   X,
   Check,
   Image,
+  ChevronDown,
 } from "lucide-react";
 import {
   actions,
@@ -24,7 +24,7 @@ import { AccountGate, Profile } from "./Account";
 import { WardrobePage } from "./Wardrobe";
 import { Studio, SavedLooks, PublicOutfit } from "./Outfits";
 import { Community, Reservations } from "./Market";
-import { ErrorBox, Loading, Modal } from "./ui";
+import { Brand, ErrorBox, Loading, Modal } from "./ui";
 const navigation = [
   ["wardrobe", "My wardrobe", Shirt],
   ["studio", "Outfit studio", Sparkles],
@@ -53,6 +53,13 @@ function Credits({ close }: { close: () => void }) {
         project.
       </p>
       <ErrorBox error={error} />
+      <p className="muted tiny">
+        Typography: Manrope, bundled with Thread under the{" "}
+        <a href="/fonts/OFL-Manrope.txt" target="_blank" rel="noreferrer">
+          SIL Open Font License
+        </a>
+        .
+      </p>
       <div className="credits-list">
         {credits.map((c) => (
           <div key={c.id}>
@@ -81,8 +88,7 @@ export default function App() {
   const { data: session, isLoading, error: sessionError } = useMeQuery();
   const dispatch = useAppDispatch();
   const { view, toast } = useAppSelector((s) => s.ui);
-  const [modal, setModal] = useState<ReactNode>(null),
-    [mobileMenu, setMobileMenu] = useState(false);
+  const [modal, setModal] = useState<ReactNode>(null);
   const close = useCallback(() => setModal(null), []);
   useEffect(() => {
     if (!toast) return;
@@ -91,7 +97,6 @@ export default function App() {
   }, [toast, dispatch]);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-    setMobileMenu(false);
   }, [view]);
   const match = location.pathname.match(/^\/s\/([a-f0-9]{48})$/);
   if (match) return <PublicOutfit token={match[1]} />;
@@ -99,7 +104,7 @@ export default function App() {
     return (
       <div className="startup-error">
         <a href="/" className="wordmark">
-          thread
+          <Brand />
         </a>
         <ErrorBox error={errorText(configError || sessionError)} />
         <button className="button" onClick={() => location.reload()}>
@@ -115,112 +120,66 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <aside className={`sidebar ${mobileMenu ? "open" : ""}`}>
-        <div className="sidebar-top">
+      <header className="app-header">
+        <div className="header-inner">
           <button
             className="wordmark"
+            aria-label="Thread home"
             onClick={() => dispatch(actions.navigate("wardrobe"))}
           >
-            thread<span>®</span>
+            <Brand />
           </button>
-          <button
-            className="icon-button mobile-only"
-            aria-label="Close navigation"
-            onClick={() => setMobileMenu(false)}
-          >
-            <X />
-          </button>
-        </div>
-        <div className="sidebar-description">
-          YOUR WARDROBE,
-          <br />
-          CONSIDERED.
-        </div>
-        <nav aria-label="Main navigation">
-          {navigation.map(([id, label, Icon], i) => (
-            <button
-              key={id}
-              className={view === id ? "active" : ""}
-              onClick={() => dispatch(actions.navigate(id))}
-              aria-current={view === id ? "page" : undefined}
-            >
-              {i === 3 && <span className="nav-divider" />}
-              <Icon size={19} strokeWidth={1.5} />
-              <span>{label}</span>
-              {view === id && <span className="nav-dot" />}
-            </button>
-          ))}
-        </nav>
-        <div className="sidebar-bottom">
-          <div className="sidebar-note">
-            <Leaf size={18} />
-            <p>
-              Less, but better.
-              <br />
-              <span>Make every piece count.</span>
-            </p>
-          </div>
-          <button
-            className="credit-link"
-            onClick={() => setModal(<Credits close={close} />)}
-          >
-            <Image size={14} />
-            Photo credits
-          </button>
-          <button
-            className="profile-button"
-            onClick={() =>
-              setModal(<Profile user={user} config={config} onClose={close} />)
-            }
-          >
-            <span className="avatar">{user.displayName[0]}</span>
-            <span>
-              <b>{user.displayName}</b>
-              <small>Your personal space</small>
-            </span>
-            <ArrowUpRight size={16} />
-          </button>
-        </div>
-      </aside>
-      {mobileMenu && (
-        <button
-          className="nav-scrim"
-          aria-label="Close menu"
-          onClick={() => setMobileMenu(false)}
-        />
-      )}
-      <div className="main-column">
-        <header className="topbar">
-          <div>
-            <button
-              className="icon-button mobile-only"
-              aria-label="Open navigation"
-              onClick={() => setMobileMenu(true)}
-            >
-              <Menu />
-            </button>
-            <span>YOUR EVERYDAY, REIMAGINED</span>
-          </div>
-          <div>
+          <nav className="main-nav" aria-label="Main navigation">
+            {navigation.map(([id, label, Icon]) => (
+              <button
+                key={id}
+                className={view === id ? "active" : ""}
+                onClick={() => dispatch(actions.navigate(id))}
+                aria-current={view === id ? "page" : undefined}
+              >
+                <Icon size={19} strokeWidth={1.8} />
+                <span className="nav-label-desktop">{label}</span>
+                <span className="nav-label-mobile">
+                  {
+                    {
+                      wardrobe: "Wardrobe",
+                      studio: "Studio",
+                      looks: "Looks",
+                      community: "Community",
+                      orders: "Orders",
+                    }[id]
+                  }
+                </span>
+              </button>
+            ))}
+          </nav>
+          <div className="header-account">
             {config.demoMode && (
               <span className="demo-badge">
                 <span />
-                DEMO SPACE
+                Demo
               </span>
             )}
             <button
-              className="top-profile"
+              className="profile-button"
+              aria-label={`Open ${user.displayName}'s profile`}
               onClick={() =>
                 setModal(
                   <Profile user={user} config={config} onClose={close} />,
                 )
               }
             >
-              Hello, {user.displayName.split(" ")[0]}
-              <span className="avatar small">{user.displayName[0]}</span>
+              <span className="avatar">{user.displayName[0]}</span>
+              <span>
+                <b>{user.displayName.split(" ")[0]}</b>
+                <small>My account</small>
+              </span>
+              <ChevronDown size={14} />
             </button>
           </div>
-        </header>
+        </div>
+      </header>
+      <div className="main-column">
         <main id="main" tabIndex={-1}>
           {view === "wardrobe" ? (
             <WardrobePage config={config} open={setModal} close={close} />
@@ -234,8 +193,18 @@ export default function App() {
             <Reservations />
           )}
           <footer className="site-footer">
-            <span>thread® · a considered wardrobe</span>
-            <span>KEEP THE GOOD THINGS GOING.</span>
+            <span>
+              <b>thread.</b> Your style, in good company.
+            </span>
+            <span className="footer-values">
+              <Leaf size={14} /> Wear more. Waste less.
+            </span>
+            <button
+              className="credit-link"
+              onClick={() => setModal(<Credits close={close} />)}
+            >
+              <Image size={14} /> Photo credits
+            </button>
           </footer>
         </main>
       </div>

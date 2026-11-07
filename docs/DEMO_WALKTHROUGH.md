@@ -2,6 +2,8 @@
 
 The accompanying `Thread_Walkthrough.mp4` is a 1920×1080 silent video with readable implementation notes. It is an **annotated screen walkthrough**, not a recording of live browser-to-API interactions.
 
+The original video shows the first visual theme. The current blue redesign is documented in [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md), including updated desktop and mobile screenshots. Re-running the export below renders the current React design; it does not replace the previously delivered video automatically.
+
 The browser preview host could not initialize CoreCLR. To preserve visual fidelity without substituting a different backend, the walkthrough uses the actual React components rendered with responses exported from the real ASP.NET application running in its integration-test host. The export creates a look, requests a reservation and accepts it through real controllers, handlers and SQLite transactions. Each captured screen is labeled accordingly.
 
 ## Video chapters

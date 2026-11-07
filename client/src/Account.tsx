@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { ArrowUpRight, Leaf, Mail, ArrowLeft, LogOut } from "lucide-react";
 import { actions, Config, User, useAppDispatch, api } from "./store";
-import { Button, ErrorBox, Modal, Success, useTask, Photo } from "./ui";
+import { Brand, Button, ErrorBox, Modal, Success, useTask, Photo } from "./ui";
 
 export function AccountGate({ config }: { config: Config }) {
   const query = new URLSearchParams(location.search);
@@ -58,7 +58,7 @@ export function AccountGate({ config }: { config: Config }) {
     <div className="auth-page">
       <section className="auth-story">
         <a className="wordmark" href="/">
-          thread<span>®</span>
+          <Brand />
         </a>
         <div className="auth-copy">
           <span className="eyebrow">YOUR WARDROBE, CONSIDERED.</span>

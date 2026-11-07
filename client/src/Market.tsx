@@ -104,6 +104,7 @@ export function Community({
             <button
               key={v}
               className={mode === v ? "active" : ""}
+              aria-pressed={mode === v}
               onClick={() => setMode(v)}
             >
               {label}
@@ -523,6 +524,7 @@ export function Reservations() {
         ].map(([v, label]) => (
           <button
             className={tab === v ? "active" : ""}
+            aria-pressed={tab === v}
             key={v}
             onClick={() => setTab(v)}
           >
