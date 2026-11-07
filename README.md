@@ -1,5 +1,5 @@
-# Thread course Stage 06
+# Thread course Stage 07
 
-React Redux and account screens. Build the client shell, shared controls, Redux store, RTK Query and real account forms.
+Wardrobe catalog vertical slice. Connect garment forms, favorites and combined search/category/color/season/style/era filters to the API.
 
 Read [COURSE_STAGE.md](COURSE_STAGE.md) for prerequisites, commands, expected results and the next branch. This is an intentionally incomplete learning checkpoint; features are added cumulatively through Stage 11.
