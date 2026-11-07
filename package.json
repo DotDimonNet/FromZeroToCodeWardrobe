@@ -1,0 +1,10 @@
+{
+  "name": "thread-wardrobe-workspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "dotnet test Wardrobe.sln -m:1 -p:UseSharedCompilation=false && npm --prefix client test"
+  }
+}
